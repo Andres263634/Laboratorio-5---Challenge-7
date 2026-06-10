@@ -1,0 +1,33 @@
+docker --version
+
+sudo docker ps
+
+sudo docker ps -a
+
+sudo docker run -d --name mysql-lab -e MYSQL_ROOT_PASSWORD=admin123 -p 3306:3306 mysql:8
+
+sudo docker run -d --name mongodb-lab -p 27017:27017 mongo:7
+
+sudo docker run -d --name redis-lab -p 6379:6379 redis:7
+
+sudo docker run -d --name postgres-lab -e POSTGRES_PASSWORD=admin123 -p 5432:5432 postgres:16
+
+sudo docker logs mysql-lab
+
+sudo docker logs postgres-lab
+
+sudo docker start mysql-lab
+
+sudo docker start redis-lab
+
+sudo docker stop redis-lab
+
+sudo docker exec -it mysql-lab mysql -u root -p
+
+sudo docker exec -it mongodb-lab mongosh
+
+sudo docker exec -it redis-lab redis-cli
+
+sudo docker exec mysql-lab mysqldump -u root -padmin123 ejemplo > backup.sql
+
+sudo docker exec -i mysql-lab mysql -u root -padmin123 ejemplo < backup.sql
